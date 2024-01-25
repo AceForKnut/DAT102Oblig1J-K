@@ -2,6 +2,7 @@ package impl;
 import adt.FilmarkivADT;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Filmarkiv implements FilmarkivADT{
 
@@ -24,17 +25,22 @@ public class Filmarkiv implements FilmarkivADT{
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
-		for(int i = 0; i < filmTab.length; i++) {
-			if(filmTab[i] == null) {
-				filmTab[i] = nyFilm;
-				antallFilmer++;
-			} else {
-				utvidTab();
-				leggTilFilm(nyFilm);
-			}
+		    int i = 0;
+		    while (i < filmTab.length) {
+		        if (filmTab[i] == null) {
+		            filmTab[i] = nyFilm;
+		            antallFilmer++;
+		            break;
+		        } else {
+		            i++;
+		        }
+		    }
+
+		    if (i == filmTab.length) {
+		        utvidTab();
+		        leggTilFilm(nyFilm);
+		    }
 		}
-		
-	}
 	private void utvidTab() {
 		Film[] nyFilmTab = new Film[filmTab.length * 2];
 	    System.arraycopy(filmTab, 0, nyFilmTab, 0, filmTab.length);
@@ -79,37 +85,50 @@ public class Filmarkiv implements FilmarkivADT{
 
 	@Override
 	public Film[] soekTittel(String delstreng) {
-		
-		Film[] sokeTreff = new Film[antallFilmer];
-		
-		for(Film film : filmTab) {
-			int i = 0;
-			if(film.getTittel().contains(delstreng)) {
-				sokeTreff[i] = film; 
-				i++;
-			}
-		}
-		return sokeTreff;
+	    Film[] sokeTreff = new Film[antallFilmer];
+
+	    int i = 0;
+
+	    for (Film film : filmTab) {
+	        if (film != null && film.getTittel().contains(delstreng)) {
+	            sokeTreff[i] = film;
+	            i++;
+	        }
+	    }
+	    return Arrays.copyOf(sokeTreff, i);
 	}
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
-		Film[] sokeTreff = new Film[antallFilmer];
-		
-		for(Film film : filmTab) {
-			int i = 0;
-			if(film.getProdusent().contains(delstreng)) {
-				sokeTreff[i] = film; 
-				i++;
-			}
-		}
-		return sokeTreff;
+	    Film[] sokeTreff = new Film[antallFilmer];
+
+	    int i = 0;
+
+	    for (Film film : filmTab) {
+	        if (film != null && film.getProdusent().contains(delstreng)) {
+	            sokeTreff[i] = film;
+	            i++;
+	        }
+	    }
+	    return Arrays.copyOf(sokeTreff, i);  
 	}
+
+	public int antall(Sjanger sjanger) {
+	    int antallSpesSjanger = 0;
+
+	    for (Film film : filmTab) {
+	        if (film != null && film.getSjanger() == sjanger) {
+	            antallSpesSjanger++;
+	        }
+	    }
+
+	    return antallSpesSjanger;
+	}
+
 
 	@Override
 	public int antall() {
 		return antallFilmer;
 	}
-	
 	
 }

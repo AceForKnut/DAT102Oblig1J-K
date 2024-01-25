@@ -1,7 +1,7 @@
 package impl;
 
 import java.util.Objects;
-
+import impl.Sjanger;
 public class Film {
 
 	private static int Ufilmnr = 0; //Unikt filmnummer
@@ -11,21 +11,19 @@ public class Film {
 	private int lansering;
 	private Sjanger sjanger;
 	private String filmselskap;
-	// private Object Film;
 
 	public Film() {
-		this.filmnr = ++Ufilmnr;
-	}
-	public Film(int filmnr, String produsent, String tittel, int lansering, Sjanger sjanger, String filmselskap ) {
-		this();
-		this.produsent = produsent;
-		this.tittel = tittel;
-		this.lansering = lansering;
-		this.sjanger = sjanger;
-		this.filmselskap = filmselskap;
-		
-		Film NyFilm = new Film();
-	}
+        this.filmnr = ++Ufilmnr;
+    }
+
+    public Film(String produsent, String tittel, int lansering, Sjanger sjanger, String filmselskap) {
+        this();
+        this.produsent = produsent;
+        this.tittel = tittel;
+        this.lansering = lansering;
+        this.sjanger = sjanger;
+        this.filmselskap = filmselskap;
+    }
 	public int getFilmnr() {
 		return filmnr;
 	}

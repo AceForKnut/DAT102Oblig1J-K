@@ -1,7 +1,7 @@
 package adt;
 
 import impl.Film;
-
+import impl.Sjanger;
 public interface FilmarkivADT {
 
 	/**
