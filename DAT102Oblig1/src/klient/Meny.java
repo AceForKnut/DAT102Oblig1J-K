@@ -57,6 +57,7 @@ public class Meny {
                 default:
                     System.out.println("Ugyldig valg. Prøv igjen.");
             }
+            scanner.close();
         }
     }
 }

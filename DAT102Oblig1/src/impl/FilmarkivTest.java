@@ -18,7 +18,7 @@ public class FilmarkivTest {
 
     @Test
     void leggTilFilm_OppretterNyttFilmObjekt() {
-        Film nyFilm = new Film(1, "Produsent", "Tittel", 2022, Sjanger.ACTION, "Filmselskap");
+        Film nyFilm = new Film("Produsent", "Tittel", 2022, Sjanger.ACTION, "Filmselskap");
         filmarkiv.leggTilFilm(nyFilm);
 
         assertEquals(nyFilm, filmarkiv.finnFilm(0));
@@ -27,8 +27,8 @@ public class FilmarkivTest {
 
     @Test
     void slettFilm_FjernerFilmOgTrimmerTabell() {
-        Film film1 = new Film(1, "Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
-        Film film2 = new Film(2, "Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
+        Film film1 = new Film("Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
+        Film film2 = new Film("Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
 
         filmarkiv.leggTilFilm(film1);
         filmarkiv.leggTilFilm(film2);
@@ -40,8 +40,8 @@ public class FilmarkivTest {
 
     @Test
     void soekTittel_FinnerFilmerMedDelstrengIListen() {
-        Film film1 = new Film(1, "Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
-        Film film2 = new Film(2, "Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
+        Film film1 = new Film("Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
+        Film film2 = new Film("Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
 
         filmarkiv.leggTilFilm(film1);
         filmarkiv.leggTilFilm(film2);
@@ -55,8 +55,9 @@ public class FilmarkivTest {
 
     @Test
     void soekProdusent_FinnerFilmerMedDelstrengIListen() {
-        Film film1 = new Film(1, "Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
-        Film film2 = new Film(2, "Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
+        Film film1 = new Film("Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
+        Film film2 = new Film("Produsent2", "Tittel2", 2022, Sjanger.COMEDY, "Filmselskap2");
+
 
         filmarkiv.leggTilFilm(film1);
         filmarkiv.leggTilFilm(film2);
@@ -70,8 +71,8 @@ public class FilmarkivTest {
 
     @Test
     void antall_FinnerAntallFilmerAvSpesifikkSjanger() {
-        Film film1 = new Film(1, "Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
-        Film film2 = new Film(2, "Produsent2", "Tittel2", 2022, Sjanger.ACTION, "Filmselskap2");
+        Film film1 = new Film("Produsent1", "Tittel1", 2022, Sjanger.ACTION, "Filmselskap1");
+        Film film2 = new Film("Produsent2", "Tittel2", 2022, Sjanger.ACTION, "Filmselskap2");
 
         filmarkiv.leggTilFilm(film1);
         filmarkiv.leggTilFilm(film2);
